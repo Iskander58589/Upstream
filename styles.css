@@ -161,22 +161,28 @@ a:hover{opacity:.95}
   .nav.open{transform:translateX(0);opacity:1;pointer-events:auto}
   .nav a{width:100%;padding:14px 16px;border-radius:18px;justify-content:flex-start}
   /* Keep language switcher visible and separate from the burger on mobile */
-  .header-actions{display:flex;align-items:center;gap:8px;margin-left:auto;padding-left:12px;border-left:1px solid rgba(255,255,255,0.06);}
+  .header-actions{display:flex;align-items:center;gap:8px;margin-left:auto;padding-left:12px;border-left:1px solid rgba(255,255,255,0.06);position:relative;z-index:80}
   .burger-toggle{margin-left:8px}
   /* Hide the duplicate in-menu switcher to avoid confusion */
   .nav-lang-switcher{display:none}
   /* Tweak language switcher sizing for small screens */
   .header-actions .lang-switcher{padding:4px}
   .header-actions .lang-option{min-width:32px;padding:6px 8px;font-size:.9rem}
+  /* Mobile-only active link highlight */
+  .nav a.active{background:rgba(255,255,255,0.16);color:#fff;font-weight:700}
 }
 
 @media(max-width:760px){
   .hero{padding:44px 0 36px}
   .hero-inner{flex-direction:column;gap:24px;align-items:stretch}
+  .hero-copy{padding:0 8px}
+  .hero-panel{order:2}
+  .hero-copy{order:1}
   .hero-copy{max-width:none}
   .hero-copy h1{font-size:clamp(2.1rem,7vw,2.8rem);line-height:1.08;margin-bottom:14px}
   .hero-copy p{font-size:0.98rem;line-height:1.7}
   .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{width:100%;margin-bottom:10px}
   .hero-panel{width:100%;max-width:none}
   .hero-highlights{grid-template-columns:1fr}
   .section{padding:60px 0}
@@ -186,6 +192,7 @@ a:hover{opacity:.95}
   .programs-overview .program-card{min-height:auto;padding:22px 20px}
   .course-grid{grid-template-columns:1fr;gap:16px}
   .course-grid .course-card{padding:24px 20px}
+  .course-grid .course-card{width:100%;box-sizing:border-box}
   .promo-card{grid-template-columns:1fr;padding:24px 20px;gap:18px}
   .promo-copy h2{font-size:clamp(1.4rem,5.2vw,1.8rem)}
   .promo-actions{flex-direction:column;align-items:stretch}
@@ -196,16 +203,26 @@ a:hover{opacity:.95}
   .testimonial-card{padding:14px}
   .footer-inner{flex-direction:column;align-items:stretch}
   .footer-card{min-width:0;max-width:none;width:100%}
+  /* Images responsive and consistent */
+  .hero-panel-top img,.camp-photo img,.detail-image-card img,.map-small,.summer-hero-visual img,.result-card img,.summer-card img{width:100%;height:auto;object-fit:cover;border-radius:18px}
 }
 
 @media(max-width:480px){
   .container{padding:0 14px}
   .logo img{height:96px}
   .hero-badge{padding:9px 14px;font-size:12px}
-  .btn{min-height:44px;padding:11px 16px;font-size:0.95rem}
+  .btn{min-height:48px;padding:11px 16px;font-size:0.95rem}
   .course-grid .course-card,.programs-overview .program-card,.promo-card,.camp-card,.location-info,.footer-card{border-radius:18px}
   .programs-overview .program-card li,.course-grid .course-card p{font-size:0.94rem}
   .section{padding:54px 0}
+  /* Ensure text doesn't touch edges */
+  body, .container, .hero-copy, .section{padding-left:14px;padding-right:14px}
+}
+/* Touch-only adjustments: remove hover reliance and add active feedback */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover, .nav a:hover, .lang-switcher:hover{transform:none}
+  .btn:active{transform:translateY(-1px);opacity:0.98}
+  .lang-option:active{transform:scale(0.98)}
 }
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 18px;border-radius:20px;font-weight:600;position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,background .3s ease,color .3s ease,border-color .3s ease;box-shadow:0 10px 24px rgba(11,37,69,0.10);border:1px solid transparent;will-change:transform,box-shadow}
 .btn::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.22),transparent);transform:translateX(-120%);transition:transform .55s ease}

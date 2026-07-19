@@ -723,6 +723,27 @@ function setupBurgerMenu() {
   });
 }
 
+function highlightActiveNav() {
+  const nav = document.getElementById('siteNav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a'));
+  const locPath = window.location.pathname.replace(/\/index\.html$/,'/');
+  links.forEach((link) => {
+    try {
+      const url = new URL(link.href, window.location.origin);
+      const linkPath = url.pathname.replace(/\/index\.html$/,'/');
+      // highlight when paths match or when hash/anchor matches current location
+      if (linkPath === locPath || url.hash && url.hash === window.location.hash) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    } catch (e) {
+      // ignore malformed
+    }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   const lang = getSavedLanguage();
   applyTranslations(lang);
@@ -744,4 +765,5 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
   setupBurgerMenu();
+  highlightActiveNav();
 });
