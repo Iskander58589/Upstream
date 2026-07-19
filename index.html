@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title id="pageTitle" data-lang-key="meta.home.title">Upstream — Образовательный центр, Алматы</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="assets/logo.png" data-lang-alt-key="header.logoAlt" alt="Логотип Upstream" loading="eager" decoding="async">
+      </a>
+      <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="siteNav" data-lang-aria-key="header.navAria" aria-label="Main navigation">
+        <a href="index.html#services" data-lang-key="header.courses">Курсы</a>
+        <a href="ielts.html" data-lang-key="header.ielts">IELTS</a>
+        <a href="summer.html" data-lang-key="header.summer">Summer Abroad ✈️</a>
+        <a href="index.html#contacts" data-lang-key="header.contacts">Контакты</a>
+        <div class="nav-lang-switcher" role="button" tabindex="0" aria-label="Выбор языка">
+          <span class="lang-option is-active" data-lang="ru">RU</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
+          <span class="lang-option is-active" data-lang="ru">RU</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-badge" data-lang-key="hero.badge">UPSTREAM UNIVERSE</span>
+          <h1 data-lang-html-key="hero.title">Английский | IELTS |<br>Математика | Казахский язык</h1>
+          <p data-lang-key="hero.text">Upstream Almaty — образовательный центр с 10-летним опытом. Готовим учеников к IELTS с носителями, развиваем талант и уверенность.</p>
+          <div class="hero-highlights">
+            <div><strong data-lang-key="hero.highlight1.title">IELTS 7.5</strong><span data-lang-key="hero.highlight1.text">за 3 месяца</span></div>
+            <div><strong data-lang-key="hero.highlight2.title">60%</strong><span data-lang-key="hero.highlight2.text">практики в уроке</span></div>
+            <div><strong data-lang-key="hero.highlight3.title">Пробный урок</strong><span data-lang-key="hero.highlight3.text">подбор группы и уровня</span></div>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://wa.me/77055844467?text=Здравствуйте!%20Хочу%20записаться%20на%20пробный%20урок" data-href-key="hero.cta1Href" data-lang-key="hero.cta1">Записаться на пробный урок</a>
+            <a class="btn btn-outline" href="https://instagram.com/upstream.almaty" target="_blank" data-lang-key="hero.cta2">Instagram</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="hero-panel-top">
+            <img src="assets/team.jpg" data-lang-alt-key="hero.imageAlt" alt="Команда Upstream" loading="lazy" decoding="async">
+          </div>
+          <div class="hero-panel-bottom">
+            <p data-lang-key="hero.panelText">Upstream Almaty — 10 лет формируем фундамент успешного будущего детей</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section container courses reveal">
+      <h2 class="section-title" data-lang-key="services.title">Наши курсы</h2>
+      <p class="section-subtitle" data-lang-key="services.subtitle">Коротко и по делу — программы, которые работают: от подготовки к экзаменам до развития творческого потенциала.</p>
+      <div class="course-grid">
+        <article class="course-card">
+          <div class="course-icon">EN</div>
+          <h3 data-lang-key="course.english.title">Английский</h3>
+          <p data-lang-key="course.english.desc">Коммуникативный курс для детей и подростков: живые разговорные практики, грамматика в контексте и подготовка к школьным экзаменам. Небольшие группы и индивидуальный подход.</p>
+          <a class="btn btn-outline btn-small" href="english.html" data-lang-key="course.english.cta">Подробнее</a>
+        </article>
+        <article class="course-card">
+          <div class="course-icon">IELTS</div>
+          <h3 data-lang-key="course.ielts.title">Подготовка к IELTS</h3>
+          <p data-lang-key="course.ielts.desc">Интенсивная подготовка с носителями языка: стратегия, тренировки по всем модулям и имитация экзаменационных условий. Цель — уверенное 6.5–8.0 и выше.</p>
+          <a class="btn btn-outline btn-small" href="ielts.html" data-lang-key="course.ielts.cta">Подробнее об IELTS</a>
+        </article>
+        <article class="course-card">
+          <div class="course-icon">M</div>
+          <h3 data-lang-key="course.math.title">Математика</h3>
+          <p data-lang-key="course.math.desc">Курсы по школьной программе и углублённая подготовка к олимпиадам: понятные объяснения, шаги решения и регулярные контрольные работы для стабильного прогресса.</p>
+        </article>
+        <article class="course-card">
+          <div class="course-icon">V</div>
+          <h3 data-lang-key="course.vocal.title">Вокал</h3>
+          <p data-lang-key="course.vocal.desc">Индивидуальные и групповые занятия по технике дыхания, постановке голоса и сценическому мастерству. Развиваем слух, артистизм и уверенность на выступлениях.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="promo-card summer-announcement reveal">
+        <div class="promo-copy">
+          <span class="hero-badge" data-lang-key="promo.badge">SUMMER ABROAD</span>
+          <h2 data-lang-key="promo.title">Учите английский за границей этим летом с Upstream Universe</h2>
+          <p data-lang-key="promo.text">Проведите лето за границей, изучая английский в международной среде, открывая новые культуры и создавая опыт, который меняет будущее.</p>
+          <div class="promo-actions">
+            <a class="btn btn-primary" href="summer.html" data-lang-key="promo.button">Подробнее</a>
+          </div>
+        </div>
+        <div class="promo-highlights">
+          <div class="promo-highlight"><strong data-lang-key="promo.h1.title">USA, UK, Европа</strong><span data-lang-key="promo.h1.text">Кардинально новый летний формат</span></div>
+          <div class="promo-highlight"><strong data-lang-key="promo.h2.title">Носители языка</strong><span data-lang-key="promo.h2.text">Живая практика и уверенная речь</span></div>
+          <div class="promo-highlight"><strong data-lang-key="promo.h3.title">Комплексная поддержка</strong><span data-lang-key="promo.h3.text">от перелётов до проживания</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container camp-banner">
+      <div class="camp-card camp-grid reveal">
+        <div class="camp-photo">
+          <img src="assets/camp.jpg" data-lang-alt-key="hero.campImageAlt" alt="Летний лагерь Upstream" loading="lazy" decoding="async">
+        </div>
+        <div class="camp-info">
+          <h2 data-lang-key="camp.title">Летний лагерь 2026</h2>
+          <p data-lang-key="camp.text">Это яркое лето для детей, которое помогает раскрыть талант, укрепить уверенность и провести время с пользой. Каждый день — активные игры, творческие занятия, английский в живом формате и много общения.</p>
+          <p data-lang-key="camp.expectTitle">Что ждёт детей:</p>
+          <ul class="camp-list">
+            <li data-lang-key="camp.item1">яркие активности и новые знакомства</li>
+            <li data-lang-key="camp.item2">развитие английского и коммуникации</li>
+            <li data-lang-key="camp.item3">творчество, движение и уверенность в себе</li>
+          </ul>
+          <p data-lang-html-key="camp.note">Запись и детали — в WhatsApp: <a href="https://wa.me/77055844467">+7 (705) 584-44-67</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- team section removed as requested -->
+
+    <section class="section container gallery reveal">
+      <h2 class="section-title" data-lang-key="location.title">Локация</h2>
+      <div class="location-grid reveal">
+        <a class="map-card" href="https://go.2gis.com/ThuR6" target="_blank" rel="noopener">
+          <img class="map-small" src="assets/map.png" data-lang-alt-key="hero.mapImageAlt" alt="Локация Upstream на карте" loading="lazy" decoding="async">
+          <span class="map-badge" data-lang-key="location.mapBadge">Открыть в 2GIS</span>
+        </a>
+        <aside class="location-info">
+          <h3 data-lang-key="location.mapTitle">Upstream Universe</h3>
+          <p data-lang-key="location.address">Улица Сагдиева, 78, Алматы</p>
+          <p data-lang-key="location.hours">Пн–Пт 09:00–17:00</p>
+          <p><strong data-lang-key="location.phone">WhatsApp:</strong> <a href="https://wa.me/77055844467">+7 (705) 584-44-67</a></p>
+          <p class="muted" data-lang-key="location.note">28 min from city center • Many bus routes • Parking available</p>
+          <a class="location-link" href="https://go.2gis.com/ThuR6" target="_blank" rel="noopener" data-lang-key="location.mapLink">Открыть маршрут в 2GIS</a>
+          <div class="gis-card">
+            <strong data-lang-key="location.mapButton">2GIS</strong>
+            <p data-lang-key="location.mapSubtitle">г. Алматы, ул. Сагдиева, 78</p>
+            <a href="https://go.2gis.com/ThuR6" target="_blank" rel="noopener" data-lang-key="location.mapButton">Открыть карту</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="reviews" class="section container testimonials reveal">
+      <h2 class="section-title" data-lang-key="reviews.title">Отзывы</h2>
+      <div class="testimonials-grid reveal">
+        <article class="testimonial-card">
+          <img class="testimonial-avatar" src="assets/review1.jpg" data-lang-alt-key="reviews.avatar1Alt" alt="Аватар ученика" loading="lazy" decoding="async">
+          <div>
+            <blockquote data-lang-key="reviews.quote1">«Учитель по IELTS помог пройти экзамен с лучшим для нас результатом — благодарны за структурированный подход и регулярную обратную связь.»</blockquote>
+            <cite data-lang-key="reviews.name1">— Данияр, студент</cite>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <img class="testimonial-avatar" src="assets/office.jpg" data-lang-alt-key="reviews.avatar2Alt" alt="Аватар родителя" loading="lazy" decoding="async">
+          <div>
+            <blockquote data-lang-key="reviews.quote2">«Математика стала понятна: задания разложили по шагам, и ребёнок начал получать 5 и 6 на контрольных.»</blockquote>
+            <cite data-lang-key="reviews.name2">— Айжан, мама</cite>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <img class="testimonial-avatar" src="assets/camp.jpg" data-lang-alt-key="reviews.avatar3Alt" alt="Аватар участника лагеря" loading="lazy" decoding="async">
+          <div>
+            <blockquote data-lang-key="reviews.quote3">«Летний лагерь — идеальное сочетание обучения и активностей. Дети вернулись вдохновлёнными и с новыми друзьями.»</blockquote>
+            <cite data-lang-key="reviews.name3">— Ерлан, родитель</cite>
+          </div>
+        </article>
+      </div>
+      <p class="muted" data-lang-html-key="reviews.note">Больше отзывов — в Instagram: <a href="https://instagram.com/upstream.almaty" target="_blank">@upstream.almaty</a></p>
+    </section>
+  </main>
+
+  <footer id="contacts" class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Upstream Universe</strong>
+        <p data-lang-key="footer.address">Улица Сагдиева, 78, Алматы</p>
+        <p class="footer-note" data-lang-key="footer.note">Подготовка к экзаменам, творческие курсы и живые занятия в атмосфере уверенного роста.</p>
+      </div>
+      <div class="footer-card">
+        <span class="footer-card-title" data-lang-key="footer.contactTitle">Напишите нам</span>
+        <a class="footer-link" href="https://wa.me/77055844467" target="_blank" rel="noopener" data-link-key="footer.whatsappHref">
+          <span class="contact-badge"><img src="assets/what.jpg" alt="WhatsApp" loading="lazy" decoding="async"></span>
+          <span class="contact-link-text" data-lang-key="footer.whatsapp">WhatsApp</span>
+        </a>
+        <a class="footer-link" href="https://instagram.com/upstream.almaty" target="_blank" rel="noopener">
+          <span class="contact-badge"><img src="assets/inst.jpg" alt="Instagram" loading="lazy" decoding="async"></span>
+          <span class="contact-link-text" data-lang-key="footer.instagram">Instagram</span>
+        </a>
+        <a class="footer-link" href="https://go.2gis.com/ThuR6" target="_blank" rel="noopener">
+          <span class="contact-badge"><img src="assets/gis.jpg" alt="2GIS" loading="lazy" decoding="async"></span>
+          <span class="contact-link-text" data-lang-key="footer.2gis">2GIS</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script src="lang.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
