@@ -154,11 +154,17 @@ a:hover{opacity:.95}
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:8px 0;
+    padding:0;
     min-height:74px;
-    gap:10px;
+    gap:8px;
   }
-  .logo{display:flex;align-items:center;flex-shrink:0;margin-right:auto}
+  .logo{
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+    margin-right:auto;
+    order:1;
+  }
   .logo img{height:84px;max-height:84px;filter:drop-shadow(0 10px 22px rgba(11,37,69,0.22))}
   .header-actions{
     display:flex;
@@ -169,6 +175,14 @@ a:hover{opacity:.95}
     padding-left:0;
     border-left:0;
     flex-shrink:0;
+    order:2;
+  }
+  .header-actions .lang-switcher{
+    order:1;
+  }
+  .header-actions .burger-toggle{
+    order:2;
+    margin-left:0;
   }
   .burger-toggle{
     display:flex;
@@ -183,6 +197,7 @@ a:hover{opacity:.95}
     border-radius:0;
     box-shadow:none;
     backdrop-filter:none;
+    order:3;
   }
   .burger-toggle span{
     width:20px;
