@@ -271,7 +271,6 @@ a:hover{opacity:.95}
 
 @media(max-width:480px){
   .container{padding:0 14px}
-  .logo img{height:96px}
   .hero-badge{padding:9px 14px;font-size:12px}
   .btn{min-height:44px;padding:11px 16px;font-size:0.95rem}
   .course-card,.programs-overview .program-card,.promo-card,.camp-card,.location-info,.footer-card{border-radius:18px}
@@ -681,10 +680,6 @@ a:hover{opacity:.95}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
 
-@media(max-width:680px){
-  .header-inner{flex-direction:column;align-items:flex-start;gap:12px}
-}
-
 .summer-hero{
   padding:72px 0 74px;
   background:radial-gradient(circle at 12% 20%, rgba(255,45,138,0.10), transparent 42%),linear-gradient(135deg,#07152d 0%,#102547 45%,#16335f 100%);
@@ -789,3 +784,72 @@ a:hover{opacity:.95}
   .btn{padding:10px 13px;font-size:0.95rem}
   .testimonial-photo{height:220px}
 }
+
+/* =========================================================================
+   MOBILE-ONLY OPTIMIZATION (phones, 320px-768px)
+   Everything below is scoped inside max-width media queries and only
+   affects phone-sized viewports. Desktop (>980px) rules above are
+   completely untouched.
+   ========================================================================= */
+@media(max-width:768px){
+  /* Compact, single-line header: logo left, lang switcher + burger right */
+  .header-inner{min-height:60px;gap:8px}
+  .logo img{height:52px;max-height:52px}
+  .header-actions{gap:8px}
+  .burger-toggle{width:40px;height:40px}
+  .lang-switcher,.nav-lang-switcher{padding:5px 6px}
+  .lang-option{padding:7px 9px;min-width:34px;font-size:.85rem}
+  .lang-separator{font-size:.8rem}
+
+  /* Smooth staggered reveal for burger nav links */
+  .nav{padding-top:82px}
+  .nav a{opacity:0;transform:translateX(16px);transition:transform .35s ease,opacity .35s ease,background .3s ease,color .3s ease,box-shadow .3s ease}
+  .nav.open a{opacity:1;transform:translateX(0)}
+  .nav.open a:nth-child(1){transition-delay:.05s}
+  .nav.open a:nth-child(2){transition-delay:.1s}
+  .nav.open a:nth-child(3){transition-delay:.15s}
+  .nav.open a:nth-child(4){transition-delay:.2s}
+  .nav.open a:nth-child(5){transition-delay:.25s}
+  .nav a,.btn{min-height:46px}
+
+  /* Eliminate horizontal scrolling caused by fixed-size elements */
+  .map-small{width:100%;height:auto;max-height:300px}
+  .hero-panel-top,.detail-image-card{max-width:100%}
+
+  /* Section rhythm & typography tuned for phones */
+  .section{padding:48px 0}
+  .section-title{font-size:clamp(1.5rem,6vw,1.85rem);margin-bottom:10px}
+  .section-subtitle{font-size:.92rem;line-height:1.65;margin-bottom:18px}
+
+  /* Subpage hero (IELTS / SAT / TOEFL / English / AIT / Summer) */
+  .detail-hero{padding:52px 0 40px;border-radius:0 0 28px 28px}
+  .detail-hero-inner{gap:20px}
+  .detail-copy h1{font-size:clamp(1.7rem,7vw,2.2rem);line-height:1.15;max-width:100%}
+  .detail-copy p{font-size:.95rem;line-height:1.65}
+  .detail-highlights{grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:18px}
+  .detail-highlights div{padding:12px 10px}
+  .detail-image-card{justify-self:stretch}
+
+  /* Cards & images: comfortable, proportional sizing */
+  .course-card-media{height:150px}
+  .camp-photo img{height:220px}
+}
+
+@media(max-width:480px){
+  .header-inner{min-height:56px}
+  .logo img{height:46px;max-height:46px}
+  .container{padding:0 14px}
+  .detail-highlights{grid-template-columns:1fr}
+  .course-card-media{height:135px}
+  .camp-photo img{height:190px}
+}
+
+@media(max-width:360px){
+  .header-inner{min-height:52px}
+  .logo img{height:40px;max-height:40px}
+  .container{padding:0 12px}
+  .section{padding:40px 0}
+}
+
+/* Lock background scroll while the mobile menu is open */
+body.nav-open{overflow:hidden}

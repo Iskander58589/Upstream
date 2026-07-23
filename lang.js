@@ -1187,6 +1187,7 @@ function setupBurgerMenu() {
     menuOverlay?.classList.remove('visible');
     burger.classList.remove('active');
     burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
   };
 
   burger.addEventListener('click', () => {
@@ -1194,6 +1195,7 @@ function setupBurgerMenu() {
     menuOverlay?.classList.toggle('visible', isOpen);
     burger.classList.toggle('active', isOpen);
     burger.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('nav-open', isOpen);
   });
 
   menuOverlay?.addEventListener('click', closeMenu);
