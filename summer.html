@@ -13,11 +13,18 @@
       <a class="logo" href="index.html">
         <img src="assets/logo.png" data-lang-alt-key="header.logoAlt" alt="Логотип Upstream" loading="eager" decoding="async">
       </a>
-      <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
+          <span class="lang-option is-active" data-lang="ru">RU</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+        </div>
+        <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <nav class="nav" id="siteNav" data-lang-aria-key="header.navAria" aria-label="Main navigation">
         <a href="index.html#services" data-lang-key="header.courses">Курсы</a>
         <a href="ielts.html" data-lang-key="header.ielts">IELTS</a>
@@ -29,13 +36,6 @@
           <span class="lang-option" data-lang="en">EN</span>
         </div>
       </nav>
-      <div class="header-actions">
-        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
-          <span class="lang-option is-active" data-lang="ru">RU</span>
-          <span class="lang-separator">|</span>
-          <span class="lang-option" data-lang="en">EN</span>
-        </div>
-      </div>
     </div>
   </header>
 

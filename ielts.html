@@ -13,11 +13,18 @@
       <a class="logo" href="index.html">
         <img src="assets/logo.png" data-lang-alt-key="header.logoAlt" alt="Логотип Upstream" loading="eager" decoding="async">
       </a>
-      <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
+          <span class="lang-option is-active" data-lang="ru">RU</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+        </div>
+        <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <nav class="nav" id="siteNav" data-lang-aria-key="header.navAria" aria-label="Main navigation">
         <a href="index.html#services" data-lang-key="header.courses">Курсы</a>
         <a href="ielts.html" data-lang-key="header.ielts">IELTS</a>
@@ -29,13 +36,6 @@
           <span class="lang-option" data-lang="en">EN</span>
         </div>
       </nav>
-      <div class="header-actions">
-        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
-          <span class="lang-option is-active" data-lang="ru">RU</span>
-          <span class="lang-separator">|</span>
-          <span class="lang-option" data-lang="en">EN</span>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -61,19 +61,23 @@
 
     <section class="section section-slate reveal">
       <div class="container">
+        <span class="summer-eyebrow" data-lang-key="ielts.eyebrow.why">WHY IELTS?</span>
         <h2 class="section-title" data-lang-key="ielts.section1.title">Что такое IELTS?</h2>
         <p class="section-subtitle" data-lang-key="ielts.section1.subtitle">IELTS — это международный экзамен по английскому, который показывает, что вы уверенно понимаете, говорите и думаете на языке в реальных академических и профессиональных ситуациях.</p>
         <div class="section-note" data-lang-key="ielts.section1.note">Это не просто тест: это стандарт, по которому принимают документы университеты, работодатели и государственные программы по всему миру.</div>
         <div class="info-grid">
           <div>
+            <span class="card-icon" aria-hidden="true">🎓</span>
             <strong data-lang-key="ielts.info1.title">Academic и General</strong>
             <p data-lang-key="ielts.info1.text">Academic нужен для поступления в университеты и магистратуры, General — для работы, миграции и профессиональных программ.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">📊</span>
             <strong data-lang-key="ielts.info2.title">Четкие критерии</strong>
             <p data-lang-key="ielts.info2.text">Ваша оценка складывается из чтения, письма, аудирования и говорения — все они измеряются по единой шкале от 0 до 9.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">🌍</span>
             <strong data-lang-key="ielts.info3.title">Международный авторитет</strong>
             <p data-lang-key="ielts.info3.text">IELTS признают в США, Великобритании, Канаде, Австралии и в сотнях вузов и работодателей по всему миру.</p>
           </div>
@@ -81,48 +85,115 @@
       </div>
     </section>
 
+    <div class="section-divider reveal"><span>✦</span></div>
+
     <section class="section section-slate reveal">
       <div class="container">
+        <span class="summer-eyebrow" data-lang-key="ielts.eyebrow.benefits">BENEFITS</span>
         <h2 class="section-title" data-lang-key="ielts.section2.title">Зачем нужен IELTS?</h2>
         <p class="section-subtitle" data-lang-key="ielts.section2.subtitle">Это привычный и уважительный способ доказать свой уровень английского при поступлении, поиске стажировок и международной карьере.</p>
         <div class="section-note" data-lang-key="ielts.section2.note">Сертификат IELTS работает как ваш профессиональный паспорт: он показывает, что вы готовы учиться и работать на английском языке там, где это действительно важно.</div>
         <div class="benefits-grid">
           <article class="benefit-card">
-            <h3 data-lang-key="ielts.benefit1.title">Поступление в лучшие вузы</h3>
+            <h3><span class="benefit-icon-inline" aria-hidden="true">🏛️</span> <span data-lang-key="ielts.benefit1.title">Поступление в лучшие вузы</span></h3>
             <p data-lang-key="ielts.benefit1.text">Результат IELTS автоматически делает вашу заявку сильнее перед приемной комиссией.</p>
           </article>
           <article class="benefit-card">
-            <h3 data-lang-key="ielts.benefit2.title">Работа за границей</h3>
+            <h3><span class="benefit-icon-inline" aria-hidden="true">💼</span> <span data-lang-key="ielts.benefit2.title">Работа за границей</span></h3>
             <p data-lang-key="ielts.benefit2.text">IELTS подтверждает вашу готовность работать в международной компании и помогает пройти языковое собеседование.</p>
           </article>
           <article class="benefit-card">
-            <h3 data-lang-key="ielts.benefit3.title">Уверенность в будущем</h3>
+            <h3><span class="benefit-icon-inline" aria-hidden="true">⭐</span> <span data-lang-key="ielts.benefit3.title">Уверенность в будущем</span></h3>
             <p data-lang-key="ielts.benefit3.text">Вы не просто сдаёте экзамен — вы получаете инструмент, который будет действовать несколько лет и расширит ваши возможности.</p>
           </article>
         </div>
       </div>
     </section>
 
+    <div class="section-divider reveal"><span>✦</span></div>
+
+    <section class="section section-slate reveal">
+      <div class="container">
+        <span class="summer-eyebrow" data-lang-key="ielts.topuni.eyebrow">TOP UNIVERSITIES</span>
+        <h2 class="section-title" data-lang-key="ielts.where.title">Где может помочь IELTS?</h2>
+        <p class="section-subtitle" data-lang-key="ielts.where.subtitle">Высокий балл IELTS открывает больше вариантов при поступлении в ведущие вузы Казахстана.</p>
+        <div class="detail-image-card" style="max-width:640px;margin:0 auto 32px;justify-self:center">
+          <img src="assets/nazarbay.jpg" data-lang-alt-key="ielts.where.imageAlt" alt="Nazarbayev University" loading="lazy" decoding="async">
+        </div>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <h3><span class="benefit-icon-inline" aria-hidden="true">🎓</span> <span data-lang-key="ielts.where.card1.title">Nazarbayev University</span></h3>
+            <p data-lang-key="ielts.where.card1.text">IELTS входит в число сертификатов, которые учитываются при поступлении в Nazarbayev University.</p>
+          </article>
+          <article class="benefit-card">
+            <h3><span class="benefit-icon-inline" aria-hidden="true">🏫</span> <span data-lang-key="ielts.where.card2.title">Ведущие вузы Казахстана</span></h3>
+            <p data-lang-key="ielts.where.card2.text">Многие казахстанские университеты признают IELTS и учитывают его при поступлении на англоязычные программы.</p>
+          </article>
+        </div>
+        <div class="section-note" data-lang-key="ielts.where.note">Важно: в рамках действующих правил приёма высокий балл IELTS может дать до 50 дополнительных баллов ЕНТ (UNT) в отдельных казахстанских вузах. Точные условия всегда уточняйте в приёмной комиссии выбранного университета — IELTS не гарантирует поступление, но усиливает вашу заявку.</div>
+      </div>
+    </section>
+
+    <div class="section-divider reveal"><span>✦</span></div>
+
+    <section class="section summer-destinations reveal">
+      <div class="container">
+        <span class="summer-eyebrow" data-lang-key="ielts.abroad.eyebrow">STUDY ABROAD</span>
+        <h2 class="section-title" data-lang-key="ielts.abroad.title">Учёба за рубежом с IELTS</h2>
+        <p class="section-subtitle" data-lang-key="ielts.abroad.subtitle">IELTS признают тысячи университетов по всему миру — вот основные регионы, где сертификат особенно востребован.</p>
+        <div class="summer-destination-grid">
+          <div class="summer-destination-card">
+            <h3 data-lang-key="ielts.abroad.country1.title">🇺🇸 США</h3>
+            <p data-lang-key="ielts.abroad.country1.text">Тысячи американских колледжей и университетов принимают IELTS наравне с TOEFL.</p>
+          </div>
+          <div class="summer-destination-card">
+            <h3 data-lang-key="ielts.abroad.country2.title">🇬🇧 Великобритания</h3>
+            <p data-lang-key="ielts.abroad.country2.text">IELTS — основной языковой тест для поступления в британские университеты.</p>
+          </div>
+          <div class="summer-destination-card">
+            <h3 data-lang-key="ielts.abroad.country3.title">🇨🇦 Канада</h3>
+            <p data-lang-key="ielts.abroad.country3.text">Канадские вузы широко признают IELTS при поступлении иностранных студентов.</p>
+          </div>
+          <div class="summer-destination-card">
+            <h3 data-lang-key="ielts.abroad.country4.title">🇦🇺 Австралия</h3>
+            <p data-lang-key="ielts.abroad.country4.text">IELTS — обязательное требование для визы и поступления в австралийские университеты.</p>
+          </div>
+          <div class="summer-destination-card">
+            <h3 data-lang-key="ielts.abroad.country5.title">🇪🇺 Европа</h3>
+            <p data-lang-key="ielts.abroad.country5.text">Многие англоязычные программы в Европе принимают IELTS как подтверждение уровня языка.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider reveal"><span>✦</span></div>
+
     <section class="section instructors-section reveal">
       <div class="container">
+        <span class="summer-eyebrow" data-lang-key="ielts.eyebrow.preparation">PREPARATION AT UPSTREAM</span>
         <h2 class="section-title" data-lang-key="ielts.section3.title">Наши преподаватели</h2>
         <p class="section-subtitle" data-lang-key="ielts.section3.subtitle">Команда включает опытных наставников IELTS и носителей языка, которые помогают не просто подготовиться к экзамену, но и говорить уверенно на английском во всех ситуациях.</p>
         <div class="info-grid">
           <div>
+            <span class="card-icon" aria-hidden="true">🗣️</span>
             <strong data-lang-key="ielts.teacher1.title">Носители языка</strong>
             <p data-lang-key="ielts.teacher1.text">Постоянная практика с носителями позволяет быстрее привыкнуть к естественной речи и понять живую английскую интонацию.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">📝</span>
             <strong data-lang-key="ielts.teacher2.title">Экзаменационная практика</strong>
             <p data-lang-key="ielts.teacher2.text">Каждая тема разбирается через реальные кейсы IELTS: письменные эссе, аудирование и устная речь.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">🎯</span>
             <strong data-lang-key="ielts.teacher3.title">Индивидуальный маршрут</strong>
             <p data-lang-key="ielts.teacher3.text">Сначала диагностика, потом план до нужного балла — мы готовим не «наугад», а по вашей текущей скорости прогресса.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="section-divider reveal"><span>✦</span></div>
 
     <section class="section results-section reveal">
       <div class="container">

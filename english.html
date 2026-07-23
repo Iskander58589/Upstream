@@ -13,11 +13,18 @@
       <a class="logo" href="index.html">
         <img src="assets/logo.png" data-lang-alt-key="header.logoAlt" alt="Логотип Upstream" loading="eager" decoding="async">
       </a>
-      <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
+          <span class="lang-option is-active" data-lang="ru">RU</span>
+          <span class="lang-separator">|</span>
+          <span class="lang-option" data-lang="en">EN</span>
+        </div>
+        <button class="burger-toggle" id="burgerToggle" data-lang-aria-key="header.burgerMenuAria" aria-label="Открыть меню" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
       <nav class="nav" id="siteNav" data-lang-aria-key="header.navAria" aria-label="Main navigation">
         <a href="index.html#services" data-lang-key="header.courses">Курсы</a>
         <a href="ielts.html" data-lang-key="header.ielts">IELTS</a>
@@ -29,13 +36,6 @@
           <span class="lang-option" data-lang="en">EN</span>
         </div>
       </nav>
-      <div class="header-actions">
-        <div class="lang-switcher" id="langSwitcher" role="button" tabindex="0" data-lang-aria-key="header.languageButtonAria" aria-label="Выбор языка">
-          <span class="lang-option is-active" data-lang="ru">RU</span>
-          <span class="lang-separator">|</span>
-          <span class="lang-option" data-lang="en">EN</span>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -61,24 +61,11 @@
 
     <section class="section programs-overview reveal">
       <div class="container">
+        <h2 class="section-title" data-lang-key="english.programs.title">Программы для любого возраста</h2>
+        <p class="section-subtitle" data-lang-key="english.programs.subtitle">От первых слов до делового английского — подберём формат, который подходит именно вам.</p>
         <div class="program-grid">
-          <div class="program-card card-green">
-            <h3 data-lang-key="english.program.adults.title">Для взрослых</h3>
-            <ul>
-              <li data-lang-key="english.program.adults.li1">Разговорная практика и навыки общения</li>
-              <li data-lang-key="english.program.adults.li2">IELTS и академическое направление</li>
-              <li data-lang-key="english.program.adults.li3">Вечерние и индивидуальные форматы</li>
-            </ul>
-          </div>
-          <div class="program-card card-yellow">
-            <h3 data-lang-key="english.program.school.title">Для школьников</h3>
-            <ul>
-              <li data-lang-key="english.program.school.li1">Укрепление оценок и уверенная речь</li>
-              <li data-lang-key="english.program.school.li2">Подготовка к экзаменам и тестам</li>
-              <li data-lang-key="english.program.school.li3">Проектная и групповая работа</li>
-            </ul>
-          </div>
           <div class="program-card card-blue">
+            <span class="program-icon" aria-hidden="true">🧒</span>
             <h3 data-lang-key="english.program.children.title">Для детей</h3>
             <ul>
               <li data-lang-key="english.program.children.li1">Игры и занятия для первых слов</li>
@@ -86,17 +73,38 @@
               <li data-lang-key="english.program.children.li3">Клубы и творческие активности</li>
             </ul>
           </div>
-          <div class="program-card card-magenta">
-            <h3 data-lang-key="english.program.ielts.title">IELTS</h3>
+          <div class="program-card card-yellow">
+            <span class="program-icon" aria-hidden="true">🎒</span>
+            <h3 data-lang-key="english.program.teenagers.title">Для подростков</h3>
             <ul>
-              <li data-lang-key="english.program.ielts.li1">Целевые тренировки по модулям</li>
-              <li data-lang-key="english.program.ielts.li2">Экзаменационные симуляции и фидбек</li>
-              <li data-lang-key="english.program.ielts.li3">Персональный план до нужного балла</li>
+              <li data-lang-key="english.program.teenagers.li1">Укрепление оценок и уверенная речь</li>
+              <li data-lang-key="english.program.teenagers.li2">Подготовка к экзаменам и тестам</li>
+              <li data-lang-key="english.program.teenagers.li3">Проектная и групповая работа</li>
+            </ul>
+          </div>
+          <div class="program-card card-green">
+            <span class="program-icon" aria-hidden="true">🗣️</span>
+            <h3 data-lang-key="english.program.adults.title">Для взрослых</h3>
+            <ul>
+              <li data-lang-key="english.program.adults.li1">Разговорная практика и навыки общения</li>
+              <li data-lang-key="english.program.adults.li2">IELTS и академическое направление</li>
+              <li data-lang-key="english.program.adults.li3">Вечерние и индивидуальные форматы</li>
+            </ul>
+          </div>
+          <div class="program-card card-magenta">
+            <span class="program-icon" aria-hidden="true">💼</span>
+            <h3 data-lang-key="english.program.corporate.title">Корпоративный английский</h3>
+            <ul>
+              <li data-lang-key="english.program.corporate.li1">Деловая переписка и переговоры</li>
+              <li data-lang-key="english.program.corporate.li2">Групповые программы для команд и компаний</li>
+              <li data-lang-key="english.program.corporate.li3">Гибкий график под рабочие задачи</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="section-divider reveal"><span>✦</span></div>
 
     <section class="section section-slate reveal">
       <div class="container">
@@ -105,14 +113,17 @@
         <div class="section-note" data-lang-key="english.section1.note">Обучение в нашем центре — это сочетание живых практик и уютной академической поддержки. Мы готовим не к “зубрёже”, а к реальным диалогам на уроках, в чате и за пределами класса.</div>
         <div class="info-grid">
           <div>
+            <span class="card-icon" aria-hidden="true">💬</span>
             <strong data-lang-key="english.info1.title">Удобно и понятно</strong>
             <p data-lang-key="english.info1.text">Мы объясняем правила через примеры, а не через длинные формулы.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">📚</span>
             <strong data-lang-key="english.info2.title">Реальные темы</strong>
             <p data-lang-key="english.info2.text">Говорим о школе, хобби, путешествиях и подготовке к экзамену — то, что пригодится сразу.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">💪</span>
             <strong data-lang-key="english.info3.title">Развитие уверенности</strong>
             <p data-lang-key="english.info3.text">Каждое занятие помогает снизить страх говорить и набирать скорость речи.</p>
           </div>
@@ -123,20 +134,25 @@
       </div>
     </section>
 
+    <div class="section-divider reveal"><span>✦</span></div>
+
     <section class="section section-slate reveal">
       <div class="container">
         <h2 class="section-title" data-lang-key="english.section2.title">Как работает чат и поддержка</h2>
         <p class="section-subtitle" data-lang-key="english.section2.subtitle">Чат — это ваш быстрый доступ к заданию, объяснению и обратной связи. Мы используем его как часть курса, чтобы прогресс не прерывался.</p>
         <div class="info-grid">
           <div>
+            <span class="card-icon" aria-hidden="true">⚡</span>
             <strong data-lang-key="english.info4.title">Ответы в реальном времени</strong>
             <p data-lang-key="english.info4.text">Вопросы по домашке, произношению или словарю решаются быстро прямо в чате.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">🤝</span>
             <strong data-lang-key="english.info5.title">Поддержка между уроками</strong>
             <p data-lang-key="english.info5.text">Вы получаете полезные материалы, подсказки и мотивацию, даже когда занятие уже закончилось.</p>
           </div>
           <div>
+            <span class="card-icon" aria-hidden="true">👥</span>
             <strong data-lang-key="english.info6.title">Групповое внимание</strong>
             <p data-lang-key="english.info6.text">Чат помогает чувствовать команду — ученики обмениваются успехами, а преподаватель следит за прогрессом.</p>
           </div>
@@ -146,6 +162,8 @@
         </div>
       </div>
     </section>
+
+    <div class="section-divider reveal"><span>✦</span></div>
 
     <section class="section reveal">
       <div class="container">
