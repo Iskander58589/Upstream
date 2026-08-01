@@ -136,6 +136,10 @@ const translations = {
     'reviews.avatar1Alt': 'Аватар ученика',
     'reviews.avatar2Alt': 'Аватар родителя',
     'reviews.avatar3Alt': 'Аватар участника лагеря',
+    'reviews.quote4': '«Отличная подготовка к SAT — сын подтянул математику и уверенно сдал экзамен с высоким баллом.»',
+    'reviews.name4': '— Марат, папа',
+    'reviews.quote5': '«Через три месяца дочка начала свободно общаться на английском — большой прогресс благодаря живой практике на занятиях.»',
+    'reviews.name5': '— Гульнара, мама',
 
     'footer.address': 'Улица Сагдиева, 78, Алматы',
     'footer.note': 'Подготовка к экзаменам, творческие курсы и живые занятия в атмосфере уверенного роста.',
@@ -679,6 +683,19 @@ const translations = {
 
     'reviews.title': 'Reviews',
     'reviews.note': 'More reviews on Instagram: <a href="https://instagram.com/upstream.almaty" target="_blank">@upstream.almaty</a>',
+    'reviews.quote1': '"Our IELTS teacher helped us pass the exam with the best possible result for us — thank you for the structured approach and regular feedback."',
+    'reviews.name1': '— Daniyar, student',
+    'reviews.quote2': '"Math finally makes sense: tasks are broken down step by step, and my child started getting top marks on tests."',
+    'reviews.name2': '— Aizhan, parent',
+    'reviews.quote3': '"Summer camp was the perfect mix of learning and activities. The kids came back inspired and with new friends."',
+    'reviews.name3': '— Yerlan, parent',
+    'reviews.avatar1Alt': 'Student avatar',
+    'reviews.avatar2Alt': 'Parent avatar',
+    'reviews.avatar3Alt': 'Camp participant avatar',
+    'reviews.quote4': '"Excellent SAT prep — our son strengthened his math skills and confidently passed the exam with a high score."',
+    'reviews.name4': '— Marat, parent',
+    'reviews.quote5': '"After three months our daughter started speaking English freely — huge progress thanks to the live practice in class."',
+    'reviews.name5': '— Gulnara, parent',
 
     'footer.address': 'Sagdiyeva street, 78, Almaty',
     'footer.note': 'Exam prep, creative courses, and live lessons in an atmosphere of confident growth.',
@@ -1233,16 +1250,16 @@ function setupBurgerMenu() {
 }
 
 function setupFooterCopyright() {
-  document.querySelectorAll('.site-footer .footer-brand').forEach((brand) => {
-    if (brand.querySelector('.footer-legal')) return;
+  document.querySelectorAll('.site-footer').forEach((footer) => {
+    if (footer.querySelector('.footer-bottom')) return;
 
-    const legal = document.createElement('div');
-    legal.className = 'footer-legal';
+    const bar = document.createElement('div');
+    bar.className = 'container footer-bottom';
 
     const copyright = document.createElement('p');
     copyright.className = 'footer-copyright';
     copyright.textContent = '© 2026 Upstream Universe. All Rights Reserved.';
-    legal.appendChild(copyright);
+    bar.appendChild(copyright);
 
     const legalLinks = document.createElement('div');
     legalLinks.className = 'footer-legal-links';
@@ -1258,8 +1275,8 @@ function setupFooterCopyright() {
       legalLinks.appendChild(link);
     });
 
-    legal.appendChild(legalLinks);
-    brand.appendChild(legal);
+    bar.appendChild(legalLinks);
+    footer.appendChild(bar);
   });
 }
 
@@ -1297,7 +1314,6 @@ function setupMobileTestimonialsSlider() {
   const cards = Array.from(grid.querySelectorAll('.testimonial-card'));
   if (cards.length < 2) return;
 
-  const mediaQuery = window.matchMedia('(max-width: 768px)');
   let currentIndex = 0;
   let autoSlideId = null;
   let dots = [];
@@ -1309,11 +1325,11 @@ function setupMobileTestimonialsSlider() {
     });
   };
 
-  const scrollToIndex = (index) => {
+  const scrollToIndex = (index, behavior = 'smooth') => {
     currentIndex = (index + cards.length) % cards.length;
     grid.scrollTo({
       left: currentIndex * grid.clientWidth,
-      behavior: 'smooth'
+      behavior
     });
     updateDots();
   };
@@ -1326,7 +1342,6 @@ function setupMobileTestimonialsSlider() {
 
   const startAutoSlide = () => {
     stopAutoSlide();
-    if (!mediaQuery.matches) return;
     autoSlideId = window.setInterval(() => {
       scrollToIndex(currentIndex + 1);
     }, 4200);
@@ -1335,7 +1350,7 @@ function setupMobileTestimonialsSlider() {
   const ensureDots = () => {
     if (!dotsContainer) {
       dotsContainer = document.createElement('div');
-      dotsContainer.className = 'mobile-testimonial-dots';
+      dotsContainer.className = 'mobile-testimonial-dots is-visible';
       cards.forEach((_, index) => {
         const dot = document.createElement('button');
         dot.type = 'button';
@@ -1353,23 +1368,13 @@ function setupMobileTestimonialsSlider() {
     updateDots();
   };
 
-  const syncSliderState = () => {
-    ensureDots();
-    grid.classList.toggle('is-mobile-slider', mediaQuery.matches);
-    dotsContainer?.classList.toggle('is-visible', mediaQuery.matches);
-    if (!mediaQuery.matches) {
-      stopAutoSlide();
-      currentIndex = 0;
-      grid.scrollLeft = 0;
-      updateDots();
-      return;
-    }
-    scrollToIndex(currentIndex);
-    startAutoSlide();
-  };
+  grid.classList.add('is-mobile-slider');
+  ensureDots();
+  dotsContainer?.classList.add('is-visible');
+  scrollToIndex(0, 'auto');
+  startAutoSlide();
 
   grid.addEventListener('scroll', () => {
-    if (!mediaQuery.matches) return;
     const nextIndex = Math.round(grid.scrollLeft / Math.max(grid.clientWidth, 1));
     if (nextIndex === currentIndex) return;
     currentIndex = Math.max(0, Math.min(cards.length - 1, nextIndex));
@@ -1386,11 +1391,13 @@ function setupMobileTestimonialsSlider() {
     startAutoSlide();
   });
 
-  if (typeof mediaQuery.addEventListener === 'function') {
-    mediaQuery.addEventListener('change', syncSliderState);
-  }
-
-  syncSliderState();
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      grid.scrollTo({ left: currentIndex * grid.clientWidth, behavior: 'auto' });
+    }, 150);
+  });
 }
 
 function highlightActiveNav() {
