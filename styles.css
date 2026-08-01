@@ -899,3 +899,138 @@ a:hover{opacity:.95}
 
 /* Lock background scroll while the mobile menu is open */
 body.nav-open{overflow:hidden}
+.nav a.mobile-only-nav-link{display:none}
+
+/* =========================================================================
+   FINAL MOBILE-ONLY PREMIUM POLISH
+   Strongest phone overrides live at the file end so they beat earlier mobile
+   rules in the cascade without affecting desktop.
+   ========================================================================= */
+@media(max-width:768px){
+  html,body{overflow-x:clip}
+  body{overflow-x:clip}
+
+  .site-header{padding:0}
+  .header-inner{min-height:58px;gap:10px;flex-wrap:nowrap}
+  .logo{min-width:0;flex:0 0 auto}
+  .logo img{height:48px;max-height:48px}
+  .header-actions{gap:10px;flex:0 0 auto;margin-left:auto}
+  .lang-switcher{padding:4px 6px;gap:4px;flex-shrink:0}
+  .lang-option{min-width:30px;padding:6px 7px;font-size:.78rem}
+  .lang-separator{font-size:.74rem}
+  .burger-toggle{width:40px;height:40px;position:relative;z-index:72}
+
+  .nav{inset:0;width:100vw;height:100dvh;margin:0;padding:92px 20px 28px;border-left:0;box-shadow:0 32px 70px rgba(0,0,0,0.34);overflow-y:auto;overflow-x:hidden;z-index:70}
+  .nav a{min-height:50px;padding:14px 16px;font-size:.94rem}
+  .nav a.mobile-only-nav-link{display:inline-flex}
+  .nav-lang-switcher{display:flex;margin-top:auto;padding-top:10px}
+  .mobile-nav-close{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(255,255,255,0.16);border-radius:16px;background:rgba(255,255,255,0.08);color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;box-shadow:0 14px 28px rgba(0,0,0,0.16);transition:transform .28s ease,background .28s ease,opacity .28s ease}
+  .mobile-nav-close:hover{transform:scale(1.04);background:rgba(255,255,255,0.14)}
+  .mobile-nav-close:focus-visible{outline:2px solid rgba(255,255,255,0.55);outline-offset:3px}
+
+  .hero{padding:34px 0 30px}
+  .hero-copy h1{font-size:clamp(1.46rem,6.6vw,1.9rem);line-height:1.16}
+  .hero-copy p,
+  .promo-copy p,
+  .camp-card p,
+  .location-info p,
+  .detail-copy p,
+  .summer-copy p,
+  .section-slate .info-grid>div p,
+  .instructors-section .info-grid p,
+  .benefit-card p,
+  .results-intro p,
+  .testimonial-card blockquote,
+  .footer-brand p,
+  .footer-note,
+  .footer-copyright{font-size:.88rem;line-height:1.6}
+  .hero-highlights strong{font-size:1rem}
+  .hero-highlights span{font-size:.72rem}
+  .section{padding:36px 0}
+  .section-title{font-size:clamp(1.28rem,5.4vw,1.6rem);margin-bottom:8px}
+  .section-subtitle{font-size:.86rem;line-height:1.58;margin-bottom:14px}
+  .btn{min-height:42px;padding:10px 14px;font-size:.86rem}
+
+  .course-grid{grid-template-columns:1fr;gap:14px;margin-top:22px}
+  .course-grid .course-card{min-height:288px}
+  .course-card-media{height:128px;display:flex;align-items:center;justify-content:center}
+  .course-card-media img{object-fit:contain;object-position:center;padding:10px}
+  .course-card-body{padding:18px 16px 16px}
+  .course-card-body h3{font-size:.98rem;line-height:1.24;margin-bottom:6px}
+  .course-card-body p{font-size:.82rem;line-height:1.54;margin-bottom:14px;min-height:5.1em}
+  .course-card-link{min-height:40px;padding:8px 13px;font-size:.8rem}
+  .course-card-icon{width:36px;height:36px;font-size:.95rem;left:14px;bottom:-16px}
+
+  .promo-card{padding:18px 16px;gap:14px}
+  .camp-grid,.location-grid{gap:16px}
+  .camp-card{padding:20px}
+  .camp-card h2{font-size:1.4rem}
+  .camp-photo img{height:auto;max-height:none;object-fit:contain;background:#fff}
+
+  .map-card{margin-top:0;border-radius:20px}
+  .map-small{width:100%;height:auto;max-height:none;object-fit:contain;background:#fff}
+  .location-info{padding:20px;border-radius:20px}
+  .location-info h3{font-size:1.05rem}
+  .location-link{min-height:42px;padding:10px 14px;font-size:.84rem}
+  .gis-card{padding:12px 14px}
+
+  .testimonials-grid.is-mobile-slider{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-y}
+  .testimonials-grid.is-mobile-slider::-webkit-scrollbar{display:none}
+  .testimonials-grid.is-mobile-slider .testimonial-card{flex:0 0 100%;min-width:100%;width:100%;padding:18px 16px;border-radius:20px;scroll-snap-align:start;box-shadow:0 18px 38px rgba(11,37,69,0.08)}
+  .testimonials-grid.is-mobile-slider .testimonial-avatar{width:52px;height:52px;flex:0 0 52px}
+  .mobile-testimonial-dots{display:none;align-items:center;justify-content:center;gap:8px;margin-top:14px}
+  .mobile-testimonial-dots.is-visible{display:flex}
+  .mobile-testimonial-dot{width:8px;height:8px;border:0;border-radius:999px;background:rgba(11,37,69,0.22);padding:0;cursor:pointer;transition:transform .25s ease,background .25s ease,width .25s ease}
+  .mobile-testimonial-dot.is-active{width:22px;background:var(--pink);transform:scale(1.02)}
+
+  .results-section{padding:38px 0 34px}
+  .result-card img{height:auto;max-height:none;object-fit:contain;background:#fff}
+  .section-slate{padding:34px 0;border-radius:24px}
+  .instructors-section{padding:34px 0;border-radius:24px}
+  .section-slate .info-grid>div,
+  .instructors-section .info-grid div,
+  .benefit-card{padding:20px 18px;border-radius:20px}
+  .benefits-grid,.info-grid,
+  .section-slate .info-grid,
+  .instructors-section .info-grid{gap:12px;margin-top:18px}
+  .detail-hero{padding:44px 0 34px;border-radius:0 0 24px 24px}
+  .detail-copy h1{font-size:clamp(1.55rem,6.8vw,2rem);line-height:1.14}
+  .detail-highlights div{padding:12px 10px;border-radius:18px}
+  .detail-image-card img,
+  .summer-hero-visual img{height:auto;max-height:none;object-fit:contain;background:#fff}
+  .detail-final-card{padding:24px 18px;margin-top:14px}
+  .detail-final-card h2{font-size:1.4rem}
+
+  .site-footer{padding:32px 0 24px}
+  .footer-inner{flex-direction:column;align-items:stretch;gap:16px}
+  .footer-brand strong{font-size:1.08rem;margin-bottom:8px}
+  .footer-card{min-width:0;max-width:none;width:100%;padding:18px;border-radius:20px}
+  .footer-card-title{font-size:.82rem;margin-bottom:12px}
+  .footer-link{padding:10px 12px;min-height:54px;margin-bottom:10px}
+  .footer-link .contact-badge{width:46px;height:46px}
+  .footer-link .contact-link-text{font-size:.88rem}
+  .footer-copyright{margin-top:12px;color:rgba(255,255,255,0.68)}
+}
+
+@media(max-width:480px){
+  .header-inner{min-height:54px;gap:8px}
+  .logo img{height:44px;max-height:44px}
+  .container{padding:0 14px}
+  .lang-option{min-width:28px;padding:6px 6px;font-size:.76rem}
+  .nav{padding:86px 16px 24px}
+  .course-grid .course-card{min-height:276px}
+  .course-card-media{height:118px}
+  .course-card-body{padding:18px 14px 14px}
+  .course-card-body p{font-size:.8rem;min-height:4.9em}
+  .hero-copy h1{font-size:clamp(1.34rem,7vw,1.75rem)}
+  .section-title{font-size:clamp(1.2rem,5.8vw,1.48rem)}
+}
+
+@media(max-width:360px){
+  .header-inner{min-height:52px}
+  .logo img{height:40px;max-height:40px}
+  .lang-option{min-width:24px;padding:5px 4px;font-size:.72rem}
+  .course-card-media{height:110px}
+  .course-grid .course-card{min-height:264px}
+  .btn{font-size:.82rem}
+}

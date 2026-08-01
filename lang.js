@@ -1174,6 +1174,15 @@ function setupBurgerMenu() {
   const overlay = document.querySelector('.mobile-nav-overlay');
   if (!burger || !nav) return;
 
+  if (!nav.querySelector('.mobile-nav-close')) {
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'mobile-nav-close';
+    closeButton.setAttribute('aria-label', 'Close menu');
+    closeButton.textContent = '×';
+    nav.prepend(closeButton);
+  }
+
   if (!overlay) {
     const newOverlay = document.createElement('div');
     newOverlay.className = 'mobile-nav-overlay';
@@ -1181,23 +1190,37 @@ function setupBurgerMenu() {
   }
 
   const menuOverlay = document.querySelector('.mobile-nav-overlay');
+  const closeButton = nav.querySelector('.mobile-nav-close');
 
   const closeMenu = () => {
     nav.classList.remove('open');
     menuOverlay?.classList.remove('visible');
     burger.classList.remove('active');
     burger.setAttribute('aria-expanded', 'false');
+    nav.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('nav-open');
   };
 
+  const openMenu = () => {
+    nav.classList.add('open');
+    menuOverlay?.classList.add('visible');
+    burger.classList.add('active');
+    burger.setAttribute('aria-expanded', 'true');
+    nav.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('nav-open');
+  };
+
+  nav.setAttribute('aria-hidden', 'true');
+
   burger.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    menuOverlay?.classList.toggle('visible', isOpen);
-    burger.classList.toggle('active', isOpen);
-    burger.setAttribute('aria-expanded', String(isOpen));
-    document.body.classList.toggle('nav-open', isOpen);
+    if (nav.classList.contains('open')) {
+      closeMenu();
+      return;
+    }
+    openMenu();
   });
 
+  closeButton?.addEventListener('click', closeMenu);
   menuOverlay?.addEventListener('click', closeMenu);
 
   nav.querySelectorAll('a').forEach((link) => {
@@ -1207,6 +1230,146 @@ function setupBurgerMenu() {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+}
+
+function setupFooterCopyright() {
+  document.querySelectorAll('.site-footer .footer-brand').forEach((brand) => {
+    if (brand.querySelector('.footer-copyright')) return;
+    const copyright = document.createElement('p');
+    copyright.className = 'footer-copyright';
+    copyright.textContent = '© Upstream Universe. All Rights Reserved.';
+    brand.appendChild(copyright);
+  });
+}
+
+function setupMobileNavLinks() {
+  const nav = document.getElementById('siteNav');
+  if (!nav) return;
+
+  const mobileLinks = [
+    { href: 'english.html', label: 'English' },
+    { href: 'ait.html', label: 'AIT' },
+    { href: 'sat.html', label: 'SAT' },
+    { href: 'toefl.html', label: 'TOEFL' },
+    { href: 'summer-camp.html', label: 'Summer Camp' }
+  ];
+
+  const langSwitcher = nav.querySelector('.nav-lang-switcher');
+  mobileLinks.forEach(({ href, label }) => {
+    if (nav.querySelector(`a[href="${href}"]`)) return;
+    const link = document.createElement('a');
+    link.href = href;
+    link.className = 'mobile-only-nav-link';
+    link.textContent = label;
+    if (langSwitcher) {
+      nav.insertBefore(link, langSwitcher);
+      return;
+    }
+    nav.appendChild(link);
+  });
+}
+
+function setupMobileTestimonialsSlider() {
+  const grid = document.querySelector('.testimonials-grid');
+  if (!grid) return;
+
+  const cards = Array.from(grid.querySelectorAll('.testimonial-card'));
+  if (cards.length < 2) return;
+
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
+  let currentIndex = 0;
+  let autoSlideId = null;
+  let dots = [];
+  let dotsContainer = document.querySelector('.mobile-testimonial-dots');
+
+  const updateDots = () => {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === currentIndex);
+    });
+  };
+
+  const scrollToIndex = (index) => {
+    currentIndex = (index + cards.length) % cards.length;
+    grid.scrollTo({
+      left: currentIndex * grid.clientWidth,
+      behavior: 'smooth'
+    });
+    updateDots();
+  };
+
+  const stopAutoSlide = () => {
+    if (!autoSlideId) return;
+    window.clearInterval(autoSlideId);
+    autoSlideId = null;
+  };
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    if (!mediaQuery.matches) return;
+    autoSlideId = window.setInterval(() => {
+      scrollToIndex(currentIndex + 1);
+    }, 4200);
+  };
+
+  const ensureDots = () => {
+    if (!dotsContainer) {
+      dotsContainer = document.createElement('div');
+      dotsContainer.className = 'mobile-testimonial-dots';
+      cards.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'mobile-testimonial-dot';
+        dot.setAttribute('aria-label', `Go to review ${index + 1}`);
+        dot.addEventListener('click', () => {
+          scrollToIndex(index);
+          startAutoSlide();
+        });
+        dotsContainer.appendChild(dot);
+      });
+      grid.insertAdjacentElement('afterend', dotsContainer);
+    }
+    dots = Array.from(dotsContainer.querySelectorAll('.mobile-testimonial-dot'));
+    updateDots();
+  };
+
+  const syncSliderState = () => {
+    ensureDots();
+    grid.classList.toggle('is-mobile-slider', mediaQuery.matches);
+    dotsContainer?.classList.toggle('is-visible', mediaQuery.matches);
+    if (!mediaQuery.matches) {
+      stopAutoSlide();
+      currentIndex = 0;
+      grid.scrollLeft = 0;
+      updateDots();
+      return;
+    }
+    scrollToIndex(currentIndex);
+    startAutoSlide();
+  };
+
+  grid.addEventListener('scroll', () => {
+    if (!mediaQuery.matches) return;
+    const nextIndex = Math.round(grid.scrollLeft / Math.max(grid.clientWidth, 1));
+    if (nextIndex === currentIndex) return;
+    currentIndex = Math.max(0, Math.min(cards.length - 1, nextIndex));
+    updateDots();
+  }, { passive: true });
+
+  grid.addEventListener('touchstart', stopAutoSlide, { passive: true });
+  grid.addEventListener('touchend', startAutoSlide, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoSlide();
+      return;
+    }
+    startAutoSlide();
+  });
+
+  if (typeof mediaQuery.addEventListener === 'function') {
+    mediaQuery.addEventListener('change', syncSliderState);
+  }
+
+  syncSliderState();
 }
 
 function highlightActiveNav() {
@@ -1251,5 +1414,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
   setupBurgerMenu();
+  setupFooterCopyright();
+  setupMobileNavLinks();
+  setupMobileTestimonialsSlider();
   highlightActiveNav();
 });
