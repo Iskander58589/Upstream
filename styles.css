@@ -958,6 +958,7 @@ body.nav-open{overflow:hidden}
     overflow-x:hidden;
     z-index:70;
     gap:8px;
+    justify-content:flex-start;
     transform:translateX(100%);
     transition:transform .36s cubic-bezier(.16,.9,.28,1),opacity .32s ease;
   }
@@ -1024,7 +1025,8 @@ body.nav-open{overflow:hidden}
   .footer-note{font-size:.92rem;line-height:1.72}
   .hero-highlights strong{font-size:1.02rem}
   .hero-highlights span{font-size:.74rem}
-  body .section{padding-top:58px;padding-bottom:58px}
+  body .section{padding-top:18px;padding-bottom:18px}
+  .section.gallery{padding-top:18px}
   .section-title{font-size:clamp(1.32rem,5.4vw,1.65rem);margin-bottom:12px;line-height:1.28}
   .section-subtitle{font-size:.9rem;line-height:1.68;margin-bottom:32px}
   .btn{min-height:46px;padding:12px 18px;font-size:.9rem}

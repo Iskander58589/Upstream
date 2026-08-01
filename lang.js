@@ -1302,12 +1302,6 @@ function setupMobileNavLinks() {
     return link;
   };
 
-  // "Главная" goes first, right before the existing "Курсы" link.
-  const coursesLink = getLink('index.html#services');
-  if (coursesLink && !getLink('index.html')) {
-    nav.insertBefore(makeLink('index.html', 'Главная'), coursesLink);
-  }
-
   // SAT / TOEFL / AIT are inserted between IELTS and Summer Abroad.
   const summerLink = getLink('summer.html');
   if (summerLink) {
