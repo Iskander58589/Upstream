@@ -1234,11 +1234,32 @@ function setupBurgerMenu() {
 
 function setupFooterCopyright() {
   document.querySelectorAll('.site-footer .footer-brand').forEach((brand) => {
-    if (brand.querySelector('.footer-copyright')) return;
+    if (brand.querySelector('.footer-legal')) return;
+
+    const legal = document.createElement('div');
+    legal.className = 'footer-legal';
+
     const copyright = document.createElement('p');
     copyright.className = 'footer-copyright';
-    copyright.textContent = '© Upstream Universe. All Rights Reserved.';
-    brand.appendChild(copyright);
+    copyright.textContent = '© 2026 Upstream Universe. All Rights Reserved.';
+    legal.appendChild(copyright);
+
+    const legalLinks = document.createElement('div');
+    legalLinks.className = 'footer-legal-links';
+
+    [
+      { label: 'Privacy Policy' },
+      { label: 'Terms of Use' }
+    ].forEach(({ label }) => {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = label;
+      link.addEventListener('click', (event) => event.preventDefault());
+      legalLinks.appendChild(link);
+    });
+
+    legal.appendChild(legalLinks);
+    brand.appendChild(legal);
   });
 }
 
