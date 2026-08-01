@@ -1191,6 +1191,15 @@ function setupBurgerMenu() {
   const overlay = document.querySelector('.mobile-nav-overlay');
   if (!burger || !nav) return;
 
+  if (!burger.querySelector('svg')) {
+    burger.innerHTML = `
+      <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+        <line class="bt-line bt-line1" x1="5" y1="10" x2="27" y2="10"></line>
+        <line class="bt-line bt-line2" x1="5" y1="16" x2="27" y2="16"></line>
+        <line class="bt-line bt-line3" x1="5" y1="22" x2="27" y2="22"></line>
+      </svg>`;
+  }
+
   if (!nav.querySelector('.mobile-nav-close')) {
     const closeButton = document.createElement('button');
     closeButton.type = 'button';
@@ -1284,26 +1293,126 @@ function setupMobileNavLinks() {
   const nav = document.getElementById('siteNav');
   if (!nav) return;
 
-  const mobileLinks = [
-    { href: 'english.html', label: 'English' },
-    { href: 'ait.html', label: 'AIT' },
-    { href: 'sat.html', label: 'SAT' },
-    { href: 'toefl.html', label: 'TOEFL' },
-    { href: 'summer-camp.html', label: 'Summer Camp' }
-  ];
-
-  const langSwitcher = nav.querySelector('.nav-lang-switcher');
-  mobileLinks.forEach(({ href, label }) => {
-    if (nav.querySelector(`a[href="${href}"]`)) return;
+  const getLink = (href) => nav.querySelector(`a[href="${href}"]`);
+  const makeLink = (href, label) => {
     const link = document.createElement('a');
     link.href = href;
     link.className = 'mobile-only-nav-link';
     link.textContent = label;
+    return link;
+  };
+
+  // "Главная" goes first, right before the existing "Курсы" link.
+  const coursesLink = getLink('index.html#services');
+  if (coursesLink && !getLink('index.html')) {
+    nav.insertBefore(makeLink('index.html', 'Главная'), coursesLink);
+  }
+
+  // SAT / TOEFL / AIT are inserted between IELTS and Summer Abroad.
+  const summerLink = getLink('summer.html');
+  if (summerLink) {
+    [
+      { href: 'sat.html', label: 'SAT' },
+      { href: 'toefl.html', label: 'TOEFL' },
+      { href: 'ait.html', label: 'AIT' }
+    ].forEach(({ href, label }) => {
+      if (!getLink(href)) nav.insertBefore(makeLink(href, label), summerLink);
+    });
+  }
+
+  // "Отзывы" is inserted between Summer Abroad and Контакты.
+  const contactsLink = getLink('index.html#contacts');
+  if (contactsLink && !getLink('index.html#reviews')) {
+    nav.insertBefore(makeLink('index.html#reviews', 'Отзывы'), contactsLink);
+  }
+
+  // Remaining bonus links go after Контакты, before the language switcher.
+  const langSwitcher = nav.querySelector('.nav-lang-switcher');
+  [
+    { href: 'english.html', label: 'English' },
+    { href: 'summer-camp.html', label: 'Summer Camp' }
+  ].forEach(({ href, label }) => {
+    if (getLink(href)) return;
+    const link = makeLink(href, label);
     if (langSwitcher) {
       nav.insertBefore(link, langSwitcher);
       return;
     }
     nav.appendChild(link);
+  });
+}
+
+function decorateNavIcons() {
+  const nav = document.getElementById('siteNav');
+  if (!nav) return;
+
+  const iconRules = [
+    { icon: '🏠', test: (href) => href === 'index.html' },
+    { icon: '📚', test: (href) => href.endsWith('#services') },
+    { icon: '⭐', test: (href) => href.includes('ielts.html') },
+    { icon: '📝', test: (href) => href.includes('sat.html') },
+    { icon: '🎧', test: (href) => href.includes('toefl.html') },
+    { icon: '📊', test: (href) => href.includes('ait.html') },
+    { icon: '🏕️', test: (href) => href.includes('summer-camp.html') },
+    { icon: '☀️', test: (href) => href.includes('summer.html') },
+    { icon: '💬', test: (href) => href.endsWith('#reviews') },
+    { icon: '✉️', test: (href) => href.endsWith('#contacts') },
+    { icon: '🗣️', test: (href) => href.includes('english.html') }
+  ];
+
+  nav.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    const rule = iconRules.find((entry) => entry.test(href));
+    if (rule) link.dataset.navIcon = rule.icon;
+  });
+}
+
+function setupMobileNavSocial() {
+  const nav = document.getElementById('siteNav');
+  if (!nav || nav.querySelector('.mobile-nav-social')) return;
+
+  const social = document.createElement('div');
+  social.className = 'mobile-nav-social';
+
+  [
+    { href: 'https://wa.me/77055844467', img: 'assets/what.jpg', label: 'WhatsApp' },
+    { href: 'https://instagram.com/upstream.almaty', img: 'assets/inst.jpg', label: 'Instagram' },
+    { href: 'https://go.2gis.com/ThuR6', img: 'assets/gis.jpg', label: '2GIS' }
+  ].forEach(({ href, img, label }) => {
+    const link = document.createElement('a');
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.className = 'mobile-nav-social-link';
+    link.setAttribute('aria-label', label);
+    const icon = document.createElement('img');
+    icon.src = img;
+    icon.alt = label;
+    icon.loading = 'lazy';
+    icon.decoding = 'async';
+    link.appendChild(icon);
+    social.appendChild(link);
+  });
+
+  nav.appendChild(social);
+}
+
+function setupFooterExtras() {
+  document.querySelectorAll('.footer-brand').forEach((brand) => {
+    if (brand.querySelector('.footer-logo')) return;
+
+    const logo = document.createElement('img');
+    logo.src = 'assets/logo.png';
+    logo.alt = 'Upstream Universe';
+    logo.className = 'footer-logo';
+    logo.loading = 'lazy';
+    logo.decoding = 'async';
+    brand.insertBefore(logo, brand.firstChild);
+
+    const phone = document.createElement('p');
+    phone.className = 'footer-contact-line';
+    phone.innerHTML = '📞 <a href="tel:+77055844467">+7 (705) 584-44-67</a>';
+    brand.appendChild(phone);
   });
 }
 
@@ -1443,7 +1552,10 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   setupBurgerMenu();
   setupFooterCopyright();
+  setupFooterExtras();
   setupMobileNavLinks();
+  decorateNavIcons();
+  setupMobileNavSocial();
   setupMobileTestimonialsSlider();
   highlightActiveNav();
 });
