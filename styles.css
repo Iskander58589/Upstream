@@ -1050,6 +1050,17 @@ body.nav-open{overflow:hidden}
   .hero-highlights span{font-size:.74rem}
   body .section{padding-top:18px;padding-bottom:18px}
   .section.gallery{padding-top:18px}
+
+  /* .programs-overview (english.html) has no opaque background of its own,
+     unlike .section-slate used by the other detail pages. The shared rule
+     ".detail-hero + .section{margin-top:-46px}" pulls it up to overlap the
+     dark hero block; on desktop the section's larger padding keeps the
+     heading clear of that overlap, but the smaller mobile padding above
+     let the heading sit inside the transparent overlap area, so the dark
+     hero background showed through behind/under the title text. Cancel
+     the overlap on mobile only so the heading always sits on the page
+     background. */
+  .detail-hero + .programs-overview{margin-top:0}
   .section-title{font-size:clamp(1.32rem,5.4vw,1.65rem);margin-bottom:12px;line-height:1.28}
   .section-subtitle{font-size:.9rem;line-height:1.68;margin-bottom:32px}
   .btn{min-height:46px;padding:12px 18px;font-size:.9rem}
