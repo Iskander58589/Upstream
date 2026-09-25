@@ -46,6 +46,10 @@ const translations = {
     'hero.campImageAlt': 'Летний лагерь Upstream',
     'hero.mapImageAlt': 'Локация Upstream на карте',
 
+    'homeVideo.titleHtml': 'Посмотрите короткое <span class="home-video-accent">видео о нас</span>',
+    'homeVideo.textHtml': 'Реальная <span>разговорная практика</span>, занятия с <span>носителем языка</span> и <span>интерактивный формат</span>.',
+    'homeVideo.iframeTitle': 'Короткое видео о Upstream',
+
     'services.title': 'Наши курсы',
     'services.subtitle': 'Коротко и по делу — программы, которые работают: от подготовки к экзаменам до развития творческого потенциала.',
 
@@ -616,6 +620,10 @@ const translations = {
     'hero.campImageAlt': 'Upstream summer camp',
     'hero.mapImageAlt': 'Upstream location on the map',
 
+    'homeVideo.titleHtml': 'Watch a short <span class="home-video-accent">video about us</span>',
+    'homeVideo.textHtml': 'Real <span>speaking practice</span>, native-speaker sessions, and an <span>interactive format</span>.',
+    'homeVideo.iframeTitle': 'Short video about Upstream',
+
     'services.title': 'Our Courses',
     'services.subtitle': 'Clear and effective programs: from exam prep to creative development.',
 
@@ -1119,6 +1127,7 @@ function translateElement(node, lang) {
   const htmlKey = node.dataset.langHtmlKey;
   const altKey = node.dataset.langAltKey;
   const ariaKey = node.dataset.langAriaKey;
+  const titleKey = node.dataset.langTitleKey;
   const hrefKey = node.dataset.linkKey || node.dataset.hrefKey || node.dataset.langHrefKey;
 
   if (htmlKey) {
@@ -1139,6 +1148,11 @@ function translateElement(node, lang) {
   if (ariaKey) {
     const translation = translations[lang][ariaKey];
     if (translation !== undefined) node.setAttribute('aria-label', translation);
+  }
+
+  if (titleKey) {
+    const translation = translations[lang][titleKey];
+    if (translation !== undefined) node.title = translation;
   }
 
   if (hrefKey) {
@@ -1164,7 +1178,7 @@ function updateSwitcherState(lang) {
 }
 
 function applyTranslations(lang) {
-  const all = document.querySelectorAll('[data-lang-key], [data-lang-html-key], [data-lang-alt-key], [data-lang-href-key], [data-link-key], [data-href-key]');
+  const all = document.querySelectorAll('[data-lang-key], [data-lang-html-key], [data-lang-alt-key], [data-lang-title-key], [data-lang-href-key], [data-link-key], [data-href-key]');
   all.forEach((node) => translateElement(node, lang));
 
   document.documentElement.lang = lang;
