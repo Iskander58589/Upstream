@@ -380,9 +380,28 @@ a:hover{opacity:.95}
 .home-video-support{max-width:560px;margin:12px 0 0;color:rgba(255,255,255,0.72);font-size:.96rem;line-height:1.6}
 .home-video-support--small{margin-top:8px}
 .home-video-card{display:flex;align-items:flex-start;justify-content:center;width:100%;padding-top:8px}
-.home-video-frame{position:relative;width:100%;max-width:320px;min-width:280px;aspect-ratio:9 / 16;border-radius:24px;background:#071226;box-shadow:0 18px 44px rgba(0,0,0,0.32),0 0 0 1px rgba(255,255,255,0.12);z-index:2;overflow:visible}
-.home-video-frame iframe{position:relative;z-index:3;width:100%;height:100%;display:block;border:0;border-radius:24px;pointer-events:auto;background:#000;overflow:visible}
+.home-video-frame{position:relative;width:100%;max-width:320px;min-width:280px;aspect-ratio:9 / 16;border-radius:24px;background:#071226;box-shadow:0 18px 44px rgba(0,0,0,0.32),0 0 0 1px rgba(255,255,255,0.12);z-index:2;overflow:hidden}
+.home-video-frame iframe{position:relative;z-index:3;width:100%;height:100%;display:block;border:0;border-radius:24px;pointer-events:auto;background:#000;overflow:hidden}
+.home-video-preview-image,.home-video-play{display:none}
+.home-video-embed{display:block}
 .courses{background:linear-gradient(180deg,rgba(255,255,255,0.72),rgba(238,245,255,0.86));border-radius:0;box-shadow:none;border-top:1px solid rgba(17,29,63,0.08)}
+
+@media (min-width: 1024px){
+  .home-video-frame{max-width:360px;min-width:0;aspect-ratio:16 / 11;border-radius:26px;overflow:hidden;box-shadow:0 26px 54px rgba(0,0,0,0.26)}
+  .home-video-preview-image{display:block;width:100%;height:100%;object-fit:cover;border-radius:26px}
+  .home-video-play{display:inline-flex;align-items:center;justify-content:center;gap:10px;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);padding:16px 28px;border:0;border-radius:999px;background:rgba(255,255,255,0.95);color:#111827;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 20px 40px rgba(5,7,12,0.3);transition:transform .22s ease,box-shadow .22s ease;background:linear-gradient(135deg,#fff,#e5e7eb)}
+  .home-video-play:hover{transform:translate(-50%,-50%) scale(1.03);box-shadow:0 24px 48px rgba(5,7,12,0.38)}
+  .home-video-play span:first-child{font-size:1.2rem;line-height:1}
+  .home-video-embed{display:none}
+  .home-video-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;visibility:hidden;pointer-events:none;z-index:1000;transition:opacity .22s ease,visibility .22s ease}
+  .home-video-modal.is-open{opacity:1;visibility:visible;pointer-events:auto}
+  .home-video-modal-backdrop{position:absolute;inset:0;background:rgba(2,6,23,0.8);backdrop-filter:blur(4px)}
+  .home-video-modal-dialog{position:relative;z-index:1;width:min(100%, 1100px);max-height:90vh;display:flex;align-items:center;justify-content:center}
+  .home-video-modal-close{position:absolute;top:-16px;right:-16px;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#111827;font-size:1.4rem;cursor:pointer;box-shadow:0 12px 32px rgba(0,0,0,0.24);z-index:2}
+  .home-video-modal-close:hover{transform:scale(1.05)}
+  .home-video-modal-frame{position:relative;width:min(100vw - 80px, 1080px);height:min(78vh, 720px);border-radius:22px;overflow:hidden;background:#000;box-shadow:0 28px 70px rgba(0,0,0,0.45)}
+  .home-video-modal-frame iframe{width:100%;height:100%;display:block;border:0;background:#000}
+}
 .home-video-section + #services.courses{margin-top:-2px;border-radius:0;box-shadow:none}
 
 .section{padding:78px 0;position:relative}

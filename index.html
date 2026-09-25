@@ -81,7 +81,18 @@
 
           <div class="home-video-card">
             <div class="home-video-frame">
+              <img
+                class="home-video-preview-image"
+                src="https://img.youtube.com/vi/PtHAh9b2XB0/maxresdefault.jpg"
+                alt="Upstream Almaty video preview"
+                loading="lazy"
+                decoding="async">
+              <button class="home-video-play" type="button" aria-label="Воспроизвести видео">
+                <span aria-hidden="true">▶</span>
+                <span>Воспроизвести видео</span>
+              </button>
               <iframe
+                class="home-video-embed"
                 src="https://www.youtube.com/embed/PtHAh9b2XB0?playsinline=1&controls=1&rel=0&modestbranding=1"
                 title="Upstream Almaty"
                 data-lang-title-key="homeVideo.iframeTitle"
@@ -96,6 +107,26 @@
         </div>
       </div>
     </section>
+
+    <div class="home-video-modal" id="homeVideoModal" aria-hidden="true">
+      <div class="home-video-modal-backdrop" data-close-video-modal="true"></div>
+      <div class="home-video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="homeVideoModalTitle">
+        <button class="home-video-modal-close" type="button" aria-label="Закрыть видео">✕</button>
+        <div class="home-video-modal-frame">
+          <iframe
+            id="homeVideoPlayer"
+            src=""
+            title="Upstream Almaty"
+            data-lang-title-key="homeVideo.iframeTitle"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            frameborder="0">
+          </iframe>
+        </div>
+      </div>
+    </div>
 
     <section id="services" class="section container courses reveal">
       <h2 class="section-title" data-lang-key="services.title">Наши курсы</h2>
@@ -324,19 +355,62 @@
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (prefersReducedMotion) {
         document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
-        return;
+      } else {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.16 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
       }
 
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.16 });
+      const modal = document.getElementById('homeVideoModal');
+      const player = document.getElementById('homeVideoPlayer');
+      const previewButton = document.querySelector('.home-video-play');
+      const closeButton = document.querySelector('.home-video-modal-close');
+      const closeBackdrop = document.querySelector('[data-close-video-modal="true"]');
+      const videoUrl = 'https://www.youtube.com/embed/PtHAh9b2XB0?autoplay=1&playsinline=1&controls=1&rel=0&modestbranding=1';
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      const stopVideo = () => {
+        if (!player) return;
+        player.src = '';
+      };
+
+      const openModal = () => {
+        if (!modal || !player) return;
+        player.src = videoUrl;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+      };
+
+      const closeModal = () => {
+        if (!modal || !player) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        stopVideo();
+      };
+
+      if (previewButton) {
+        previewButton.addEventListener('click', openModal);
+      }
+
+      if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+      }
+
+      if (closeBackdrop) {
+        closeBackdrop.addEventListener('click', closeModal);
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </body>
