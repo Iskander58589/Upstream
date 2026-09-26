@@ -99,7 +99,6 @@
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
                 allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
                 frameborder="0">
               </iframe>
             </div>
@@ -121,7 +120,6 @@
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"
             allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
             frameborder="0">
           </iframe>
         </div>
@@ -283,44 +281,67 @@
     </section>
 
     <section id="reviews" class="section container testimonials reveal">
-      <h2 class="section-title" data-lang-key="reviews.title">Отзывы</h2>
-      <div class="testimonials-grid reveal">
+      <h2 class="section-title" data-lang-key="reviews.title">Client Reviews</h2>
+
+      <div class="testimonials-grid reveal" aria-label="Client reviews carousel">
         <article class="testimonial-card">
-          <span class="testimonial-avatar" aria-hidden="true">🎓</span>
-          <div>
-            <blockquote data-lang-key="reviews.quote1">«Учитель по IELTS помог пройти экзамен с лучшим для нас результатом — благодарны за структурированный подход и регулярную обратную связь.»</blockquote>
-            <cite data-lang-key="reviews.name1">— Данияр, студент</cite>
+          <div class="testimonial-header">
+            <div class="testimonial-avatar" aria-hidden="true">М</div>
+            <div class="testimonial-author">
+              <h3>Мустафа Ерболулы</h3>
+              <span>1 review</span>
+            </div>
           </div>
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="testimonial-date">9 September 2026</div>
+          <p class="testimonial-text">This is the very best educational center, where I can truly feel the energy of growth. The teachers are kind, patient and highly professional, and every lesson makes me more confident in my future.</p>
         </article>
+
         <article class="testimonial-card">
-          <span class="testimonial-avatar" aria-hidden="true">🧮</span>
-          <div>
-            <blockquote data-lang-key="reviews.quote2">«Математика стала понятна: задания разложили по шагам, и ребёнок начал получать 5 и 6 на контрольных.»</blockquote>
-            <cite data-lang-key="reviews.name2">— Айжан, мама</cite>
+          <div class="testimonial-header">
+            <div class="testimonial-avatar avatar-alt" aria-hidden="true">О</div>
+            <div class="testimonial-author">
+              <h3>Оксана Десятова</h3>
+              <span>1 review</span>
+            </div>
           </div>
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="testimonial-date">9 September 2026</div>
+          <p class="testimonial-text">As a parent, I value that my child of Upstream Universe can grow in a warm and inspiring environment. The teachers are attentive, the atmosphere is encouraging, and the results are obvious.</p>
         </article>
+
         <article class="testimonial-card">
-          <span class="testimonial-avatar" aria-hidden="true">🏕️</span>
-          <div>
-            <blockquote data-lang-key="reviews.quote3">«Летний лагерь — идеальное сочетание обучения и активностей. Дети вернулись вдохновлёнными и с новыми друзьями.»</blockquote>
-            <cite data-lang-key="reviews.name3">— Ерлан, родитель</cite>
+          <div class="testimonial-header">
+            <div class="testimonial-avatar avatar-alt-2" aria-hidden="true">А</div>
+            <div class="testimonial-author">
+              <h3>Алина К.</h3>
+              <span>1 review</span>
+            </div>
           </div>
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="testimonial-date">12 September 2026</div>
+          <p class="testimonial-text">The lessons are structured, motivating and always encouraging. I especially appreciate how comfortable and supported students feel here. It is a place where learning becomes exciting.</p>
         </article>
+
         <article class="testimonial-card">
-          <span class="testimonial-avatar" aria-hidden="true">📘</span>
-          <div>
-            <blockquote data-lang-key="reviews.quote4">«Отличная подготовка к SAT — сын подтянул математику и уверенно сдал экзамен с высоким баллом.»</blockquote>
-            <cite data-lang-key="reviews.name4">— Марат, папа</cite>
+          <div class="testimonial-header">
+            <div class="testimonial-avatar avatar-alt-3" aria-hidden="true">Д</div>
+            <div class="testimonial-author">
+              <h3>Дархан Б.</h3>
+              <span>1 review</span>
+            </div>
           </div>
-        </article>
-        <article class="testimonial-card">
-          <span class="testimonial-avatar" aria-hidden="true">💬</span>
-          <div>
-            <blockquote data-lang-key="reviews.quote5">«Через три месяца дочка начала свободно общаться на английском — большой прогресс благодаря живой практике на занятиях.»</blockquote>
-            <cite data-lang-key="reviews.name5">— Гульнара, мама</cite>
-          </div>
+          <div class="testimonial-rating" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="testimonial-date">15 September 2026</div>
+          <p class="testimonial-text">I came for exam prep and stayed for the atmosphere. Teachers explain clearly, students are respected, and every class feels purposeful. The center is truly inspiring.</p>
         </article>
       </div>
+
+      <div class="testimonial-controls" aria-label="Reviews navigation">
+        <button type="button" class="testimonial-arrow testimonial-arrow-prev" aria-label="Previous review">&#8249;</button>
+        <button type="button" class="testimonial-arrow testimonial-arrow-next" aria-label="Next review">&#8250;</button>
+      </div>
+
       <p class="muted" data-lang-html-key="reviews.note">Больше отзывов — в Instagram: <a href="https://instagram.com/upstream.almaty" target="_blank">@upstream.almaty</a></p>
     </section>
   </main>
